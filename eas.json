@@ -1,0 +1,10 @@
+{
+  "build": {
+    "production": {
+      "env": {
+        "STREAMCHAT_API": "wenq5k4dajja",
+        "FIRBASE_AUTH_API": "AIzaSyADhPI7RQRdD1Q7e6C39VbO-ShejiyZXxw"
+      }
+    }
+  }
+}
