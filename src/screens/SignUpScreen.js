@@ -29,7 +29,7 @@ export default function SignUpScreen({ navigation }) {
     try {
       const token = await createUser(email, password);
       authCtx.authenticate(token);
-
+      console.log(token)
       await client.connectUser(
         {
           id: token.localId,
@@ -40,10 +40,10 @@ export default function SignUpScreen({ navigation }) {
         client.devToken(token.localId)
       );
 
-      //   const channel = client.channel("livestream", "public", {
-      //     name: "Public",
-      //   });
-      //   await channel.watch();
+        const channel = client.channel("livestream", "public", {
+          name: "Public",
+        });
+        await channel.watch();
     } catch (err) {
       Alert.alert("Failed to sign up.", err.message || "Please try again.");
     }
@@ -83,6 +83,7 @@ export default function SignUpScreen({ navigation }) {
           style={styles.input}
           placeholderTextColor="grey"
           placeholder="Password"
+          secureTextEntry={true}
           autoCapitalize="none"
         />
         <Pressable

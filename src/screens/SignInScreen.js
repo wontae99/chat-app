@@ -72,6 +72,7 @@ export default function SignInScreen({ navigation }) {
           placeholderTextColor="grey"
           placeholder="Password"
           autoCapitalize="none"
+          secureTextEntry={true}
         />
 
         <Pressable onPress={() => navigation.navigate("SignUp")}>

@@ -3,8 +3,8 @@ import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 function LoadingOverlay({ message }) {
   return (
     <View style={styles.rootContainer}>
-      <Text style={styles.message}>{message}</Text>
       <ActivityIndicator size="large" />
+      <Text style={styles.message}>{message}</Text>
     </View>
   );
 }
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     padding: 32,
   },
   message: {
-    fontSize: 12,
-    marginBottom: 12,
+    paddingTop: 12,
+    color: "#fff",
   },
 });

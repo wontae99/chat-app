@@ -12,7 +12,6 @@ import { useChatContext } from "stream-chat-expo";
 import Colors from "../constants/Colors";
 import EtcProfileContent from "../components/etc/EtcProfileContent";
 import Card from "../components/ui/Card";
-import Spinner from "react-native-loading-spinner-overlay";
 
 export default function EtcScreen({ navigation }) {
   const [loading, setLoading] = useState(true);
@@ -48,19 +47,24 @@ export default function EtcScreen({ navigation }) {
     fetchUserData();
   }, [loading, navigation, authCtx]);
 
+  const signOutHandler = async () => {
+    await client.disconnectUser();
+    authCtx.logout();
+  };
+
   return (
     <View style={styles.rootContainer}>
       <View style={{ flex: 1, width: "100%", padding: 14 }}>
         <Card backgroundColor={Colors.dark.darkPrimary200}>
           {loading || !userData ? (
-            <View style={{ flex: 1, justifyContent: "center" }}>
+            <View style={styles.center}>
               <ActivityIndicator color="#fff" size={"large"} />
             </View>
           ) : (
             <EtcProfileContent
               userData={userData}
               editing={false}
-              onPress={() => authCtx.logout()}
+              onPress={signOutHandler}
               name={userData.name}
               email={userData.email}
             />
@@ -77,5 +81,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: Colors.dark.darkPrimary,
+  },
+  center: {
+    flex: 1,
+    justifyContent: "center",
   },
 });

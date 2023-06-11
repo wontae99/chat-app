@@ -55,13 +55,22 @@ export default function UserListScreen({ navigation }) {
   }, [navigation]);
 
   if (users.length === 0) {
-    return;
+    return (
+      <View>
+        <Text>Don't have any friends now... Let's make some!</Text>
+      </View>
+    );
   }
 
   return <UserList data={users} onPress={startChannel} />;
 }
 
 const styles = StyleSheet.create({
+  center: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   btnStyle: {
     marginRight: 12,
   },
