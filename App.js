@@ -13,7 +13,9 @@ import AuthContextProvider, { AuthContext } from "./src/store/auth-context";
 import AuthNavigator from "./src/navigation/AuthNavigator";
 import StackNavigator from "./src/navigation/StackNavigator";
 
-const API_KEY = "wenq5k4dajja";
+import CHAT_API from "@env"
+
+const API_KEY = CHAT_API;
 const client = StreamChat.getInstance(API_KEY);
 
 const theme = {
